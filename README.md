@@ -101,13 +101,18 @@ Use the evidence label, not the model name, to decide what is known.
 | Evidence | Target | Firmware / platform | Result |
 |---|---|---|---|
 | **Live** | `QN65S95CAFXZA` | `T-PTMCAKUC-0080`, Tizen 8.0.0 | `id` returned `uid=0(root)`; root path executed on 2026-09-12 |
-| **Static only** | Later S95C/Tizen builds examined during the research | `vddebugmenu` / `libsdbd_plugin` primitives observed in the extracted platform | No live root result; do not treat this as compatible |
-| **Static only** | Tizen 10 `T-PTMHDEUC-0100` | `vddebugmenu.service` and `libsdbd_plugin` inspected offline | No live Tizen 10 result; the Tizen 10 gate is unmeasured |
-| **Not tested** | Any other Samsung model or region | — | No claim; do not extrapolate from the S95C |
+| **Live, independent report** | `TU65M73HAUXXC` (M73H / X22) | `T-X22UDHDEUC-0100-1245.5`, Tizen 10.0 | `id` returned `uid=0(root)` with `context="User::Shell"`; reported by @zebazoke-crypto on 2026-11-18 in [#1](https://github.com/geckods/samsung-tizen-root/issues/1) |
+| **Static only** | Tizen 10 `T-PTMHDEUC-0100` | `vddebugmenu.service` and `libsdbd_plugin` inspected offline | No live result for this exact image; the X22 build above is a separate third-party report |
+| **Not tested** | Any other Samsung model, region, or Tizen 10 build | — | No claim; do not extrapolate from either live result |
 
-“Live” means a command ran on the unit and returned uid 0. “Static only” means
-the relevant files or strings were present in a firmware image; it is not a
-successful root test.
+“Live” means a command ran on the unit and returned uid 0. “Live, independent
+report” means a third party reported that result in issue #1; it has not been
+re-run by the repository owner. “Static only” means the relevant files or
+strings were present in a firmware image; it is not a successful root test.
+
+The Tizen 10 result is one model and one build. The same issue thread also
+contains a Vetro agent-integration attempt that did not complete; it is not
+counted as a root result.
 
 ## Before you run
 
